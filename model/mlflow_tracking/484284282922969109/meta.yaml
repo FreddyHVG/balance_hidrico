@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/484284282922969109
+creation_time: 1748286956261
+experiment_id: '484284282922969109'
+last_update_time: 1748286956261
+lifecycle_stage: active
+name: balance_hidrico_modelo_xgboost
