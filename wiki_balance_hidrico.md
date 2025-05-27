@@ -537,7 +537,6 @@ mlflow.set_tracking_uri("file:///content/drive/.../mlflow_tracking")
 mlflow_process = subprocess.Popen(["mlflow", "ui", "--port", "9090", "--backend-store-uri", os.environ['MLFLOW_TRACKING_URI']])
 mlflow_tunnel = ngrok.connect(9090, "http")
 ```
-![Dashboard Supabase](images/supabase.png)
 
 ---
 
@@ -813,15 +812,118 @@ print(f"✅ App disponible en: {public_url}")
 
 ---
 
-### 🎯 Resultado final
+# 🧪 RESULTADOS OBTENIDOS EN LA PRUEBA DE LA APLICACIÓN
 
-Al ejecutar estos pasos, la aplicación Streamlit estará disponible públicamente mediante una URL de ngrok como:
+## Análisis de Balance Hídrico PET calculada y Precipitación para la provincia del Carchi
 
+Durante la validación del sistema, se evaluaron los cálculos del balance hídrico mensual para la provincia de Carchi (Ecuador), específicamente para el mes de julio de 2011. A continuación, se presentan las visualizaciones generadas para tres variables clave: evapotranspiración potencial (PET), precipitación y balance hídrico.
+
+### 🌤️ 1. PET (Evapotranspiración Potencial)
+
+La evapotranspiración potencial (PET) representa la cantidad máxima de agua que se puede evaporar y transpirar desde la superficie si el agua estuviera disponible en cantidad suficiente. En la figura, se observa un patrón espacial con mayores valores de PET en zonas de menor altitud, donde la temperatura y la radiación solar suelen ser más intensas. Las zonas más oscuras (rojo) indican mayor demanda atmosférica de agua.
+
+**Figura 1. PET mensual para Carchi - julio 2011**
+
+```markdown
+![PET Carchi Julio 2011](images/CarchiPET.png)
 ```
-https://xxxx-xx-xx-xx-xx.ngrok-free.app
+
+---
+
+### ☔️ 2. Precipitación
+
+La precipitación acumulada mensual muestra una distribución que varía con la topografía, siendo más alta en zonas montañosas del oriente. Las áreas en azul intenso indican regiones con mayor precipitación en el mes analizado. Este valor es esencial para el cálculo del balance hídrico, pues representa el ingreso principal de agua al sistema superficial.
+
+**Figura 2. Precipitación mensual para Carchi - julio 2011**
+
+```markdown
+![Precipitación Carchi Julio 2011](images/CarchiP.png)
 ```
 
-Es posible compartir la URL con cualquier persona para mostrar el dashboard de análisis y proyección del balance hídrico.
+---
+
+### 🌊 3. Balance hídrico mensual
+
+El balance hídrico es el resultado de restar la PET a la precipitación. La figura muestra que en muchas zonas del centro y norte de Carchi existe un superávit hídrico (color azul), es decir, que la precipitación supera a la demanda atmosférica de agua. Por otro lado, las zonas en rojo indican déficit hídrico, donde la evaporación potencial no es completamente satisfecha por la lluvia.
+
+**Figura 3. Balance hídrico mensual para Carchi - julio 2011**
+
+```markdown
+![Balance Hídrico Carchi Julio 2011](images/CarchiBH.png)
+```
+
+---
+
+## 📊 Análisis histórico del balance hídrico mensual en Carchi (Ecuador)
+
+El análisis histórico del balance hídrico mensual para el período de enero de 1981 hasta diciembre de 2023 proporciona una perspectiva clara de la variabilidad climática en la provincia de Carchi. Esta información es crucial para comprender los patrones de disponibilidad hídrica, identificar años críticos y planificar estrategias de adaptación al cambio climático.
+
+### 🌧️ 1. Balance hídrico mensual
+
+La Figura 1 muestra la serie temporal del balance hídrico mensual. Se observa una marcada estacionalidad, con periodos alternantes de superávit y déficit hídrico. Las oscilaciones reflejan la influencia de eventos climáticos estacionales y fenómenos como El Niño y La Niña, que pueden intensificar las sequías o lluvias en la región.
+
+**Figura 1. Balance hídrico mensual para Carchi (1981–2023)**
+
+```markdown
+![Balance hídrico mensual](images/historico_mensual.png)
+```
+
+### 📉 2. Tendencia anual del balance hídrico
+
+La Figura 2 representa la tendencia anual del balance hídrico medio en Carchi. A lo largo de las últimas décadas, aunque la variabilidad anual es evidente, se pueden identificar posibles tendencias decrecientes en algunos años, lo cual puede estar asociado a cambios en los patrones de precipitación y evapotranspiración.
+
+**Figura 2. Tendencia anual del balance hídrico promedio en Carchi**
+
+```markdown
+![Tendencia anual del balance hídrico](images/historico_anual.png)
+```
+
+### 🔍 3. Anomalías respecto a la media del periodo
+
+La Figura 3 muestra las anomalías anuales del balance hídrico respecto a la media del periodo completo. Las barras azules indican años con balance hídrico por encima del promedio, mientras que las barras rojas representan años con déficit. Esta visualización permite detectar eventos extremos que podrían tener impactos significativos en los sistemas agrícolas y en la disponibilidad de agua.
+
+**Figura 3. Anomalías del balance hídrico anual respecto al promedio**
+
+```markdown
+![Anomalías del balance hídrico](images/historico_anomalias.png)
+```
+---
+
+## 🔮 Proyección del balance hídrico mensual en Carchi (Ecuador)
+
+El análisis de proyección del balance hídrico mensual en Carchi para el período de mayo de 2015 hasta junio de 2049 se fundamenta en el uso de datos climáticos proyectados (CMIP6) y la aplicación de un modelo de aprendizaje automático (XGBoost). Esta sección ofrece una estimación del comportamiento futuro del recurso hídrico en la región bajo condiciones de cambio climático.
+
+### 📆 1. Proyección mensual del balance hídrico
+
+La Figura 1 muestra la evolución proyectada del balance hídrico mensual. Se aprecian ciclos de variación regular, con algunos periodos en los que se anticipan déficits hídricos más pronunciados, especialmente hacia las décadas de 2030 y 2040.
+
+**Figura 1. Proyección del balance hídrico mensual (2015–2049)**
+
+```markdown
+![Proyección mensual del balance hídrico](images/proyeccion_mensual.png)
+```
+
+### 📉 2. Tendencia anual del balance hídrico proyectado
+
+La Figura 2 presenta el promedio anual proyectado del balance hídrico. Aunque se observa variabilidad interanual, existe una ligera tendencia a la disminución en los valores promedios anuales, lo que sugiere un potencial aumento en el estrés hídrico regional a futuro.
+
+**Figura 2. Tendencia anual del balance hídrico proyectado**
+
+```markdown
+![Tendencia anual del balance hídrico proyectado](images/proyeccion_anual.png)
+```
+
+### 🔍 3. Anomalías futuras del balance hídrico
+
+La Figura 3 muestra las anomalías anuales del balance hídrico futuro respecto al promedio proyectado. Los valores negativos indican años más secos que la media, mientras que los positivos reflejan años con mayor disponibilidad hídrica. Esta herramienta es útil para anticipar posibles impactos en la agricultura, la gestión de cuencas y la planificación del uso del agua.
+
+**Figura 3. Anomalías del balance hídrico proyectado (2015–2049)**
+
+```markdown
+![Anomalías del balance hídrico proyectado](images/proyeccion_anomalias.png)
+```
+
+
 
 # CONCLUSIONES
 
